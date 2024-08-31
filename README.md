@@ -49,33 +49,6 @@ Build a native image with GraalVM:
 
 Compiling this takes forever, but once its finished, you can start it with `./webmvc-postgres` on your console. Remember to also setup your database. 
 
-
-## How to run
-### working
-in application yaml:
-```yaml
-spring.application.name=webmvc-postgres
-spring.datasource.url=jdbc:postgresql://localhost:5432/bookdatabase
-spring.datasource.username=postgres
-spring.datasource.password=123
-
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.threads.virtual.enabled=false
-```
-
-fill out {path_to_schema} with the correct path   
-this one is the correct docker run command:
-```
-docker run --name postgrestestdb -e POSTGRES_PASSWORD=123 -e POSTGRES_DB=bookdatabase -v {path_to_schema}/schema.sql:/docker-entrypoint-initdb.d/schema.sql -d -p 5432:5432 postgres
-```
-
-in the end to ensure that everything docker is killed run this:
-
-`docker ps -a` // shows all running containers  
-`docker container stop <id>` // kill specific docker container   
-`docker rm $(docker ps -aq)`  // kill ALL docker containers
-
 ## From Project Initialization
 ### Reference Documentation
 
